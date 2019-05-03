@@ -33,9 +33,7 @@ if ($_POST["buttonaddach"]) {
         if($dcarte== "") {$erreur.= "Le champ date de carte est vide. <br>";}
         if($ccarte== "") {$erreur.= "Le champ cryptogramme de carte est vide. <br>";}
 
-        if ($erreur== "") {echo "Formulaire valide";}
-        else {echo "Erreur : $erreur";}
-        if($db_found){
+        if ($erreur== "") {if($db_found){
             echo "INSERER" ;       
             $sql= "INSERT INTO acheteur(email, mdp, nom, prenom, adresse, cpost, ville, pays, ntel, tcarte, ncarte, dcarte, ccarte) VALUES ('$email','$mdp','$nom','$prenom','$adresse','$cpost','$ville','$pays','$ntel','$tcarte','$ncarte','$dcarte','$ccarte')";
             mysqli_query($db_handle, $sql);
@@ -43,7 +41,9 @@ if ($_POST["buttonaddach"]) {
         }
         else{
             echo "Database not found";
-        }
+        }}
+        else {echo "Erreur : $erreur";}
+        
     }
 
 ?>

@@ -21,16 +21,16 @@ if ($_POST["buttonaddvd"]) {
 		if($pdp== "") {$erreur.= "Le champ photo de profil est vide. <br>";}
 		if($image== "") {$erreur.= "Le champ image de fond est vide. <br>";}
 
-		if ($erreur== "") {echo "Formulaire valide";}
-		else {echo "Erreur : $erreur";}
-		if($db_found){     
+		if ($erreur== "") {if($db_found){     
 		    $sql= "INSERT INTO vendeur(email, pseudo, mdp, nom, prenom, pdp, image) VALUES ('$email','$pseudo', '$mdp','$nom','$prenom','$pdp','$image')";
 		    mysqli_query($db_handle, $sql);
 		    header("Location:Formulaire.php");
 		}
 		else{
 		    echo "Database not found";
-		}
+		}}
+		else {echo "Erreur : $erreur";}
+		
 	}
 
 ?>

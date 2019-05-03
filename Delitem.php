@@ -23,6 +23,7 @@
                 }
                 $sql = "DELETE FROM items WHERE Titre = '$titre'"; 
                 $result = mysqli_query($db_handle, $sql);
+                
             }
          }else {
         echo "Database not found";
