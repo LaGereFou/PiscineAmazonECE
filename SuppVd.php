@@ -19,8 +19,12 @@
 			else {
 				while ($data = mysqli_fetch_assoc($result)) {
 					$email = $data['email'];
+					$pseudo= $data['pseudo'];
+					echo $pseudo;
 					echo "<br>";
 				}
+				$sql = "DELETE FROM iteme WHERE Vendeur = '$pseudo'";
+				$result = mysqli_query($db_handle, $sql);
 				$sql = "DELETE FROM vendeur WHERE Email = '$email'"; 
 				$result = mysqli_query($db_handle, $sql);
 			}
